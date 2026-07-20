@@ -36,6 +36,21 @@ Copy the folder into the project's `.claude/skills/` instead of `~/.claude/skill
 
 Verify with `ls ~/.claude/skills/` — each skill is a folder containing `SKILL.md`.
 
+## Maintenance
+
+`figma-senior-mode` cross-references the official `figma-use` skill by rule number
+(`§1 rule 8 — fonts`, etc.). Those numbers can drift when Figma updates its skills.
+When you update the Figma MCP plugin, re-verify these four still point at the right rule:
+
+| In figma-senior-mode | Should match figma-use |
+|---|---|
+| §1 rule 3a | `getPluginData`/`setPluginData` unsupported → `getSharedPluginData` |
+| §1 rule 8  | text-edit recipe / `listAvailableFontsAsync` ("Semi Bold", not "SemiBold") |
+| §1 rule 9  | `setCurrentPageAsync` (sync `figma.currentPage =` throws) |
+| §1 rule 15 | return all created/mutated node IDs |
+
+Verified against the installed `figma-use` on 2026-07-20.
+
 ## License
 
 MIT

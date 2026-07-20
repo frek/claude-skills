@@ -147,9 +147,9 @@ license: MIT
 - **Не лочить размеры там, где нужен hug.** Это самый частый источник "почему карточка не растягивается".
 - **Не плодить one-off** цвета, spacing'и, шрифты. Это медленная порча design system'а.
 - **Не молчать про неоднозначности.** См. §7.
-- **"Inter SemiBold"** — неправильно. Правильно: `"Inter Semi Bold"` (с пробелом). Same для Extra Bold, Extra Light. Используй `figma.listAvailableFontsAsync()` если сомневаешься (см. figma-use §1.8).
-- **`figma.currentPage = page`** — не работает. Только `await figma.setCurrentPageAsync(page)`. (Это в figma-use §1.9, но напоминаю — джуны это путают каждый раз.)
-- **`getPluginData/setPluginData`** — не работает в `use_figma`. Только `getSharedPluginData(namespace, key)` с уникальным namespace. (figma-use §1.3a.)
+- **"Inter SemiBold"** — неправильно. Правильно: `"Inter Semi Bold"` (с пробелом). Same для Extra Bold, Extra Light. Используй `figma.listAvailableFontsAsync()` если сомневаешься (см. figma-use §1 rule 8 — шрифты/fonts).
+- **`figma.currentPage = page`** — не работает. Только `await figma.setCurrentPageAsync(page)`. (Это в figma-use §1 rule 9 — setCurrentPageAsync, но напоминаю — джуны это путают каждый раз.)
+- **`getPluginData/setPluginData`** — не работает в `use_figma`. Только `getSharedPluginData(namespace, key)` с уникальным namespace. (figma-use §1 rule 3a — shared plugin data.)
 - **Не пихать всё в один `use_figma`-скрипт.** Atomic execution + сложность отладки = провал. Маленькими шагами.
 - **Не игнорировать ошибки `use_figma`** в духе "ща ещё раз попробую". `figma-use` чётко требует: STOP → read error → fix → retry.
 
@@ -165,5 +165,5 @@ license: MIT
 - [ ] States продуманы (или явно проговорено что пропущено и почему)
 - [ ] Контраст проверен (или проговорено что не верифицировано)
 - [ ] `get_screenshot` показывает то, что ожидалось
-- [ ] Возвращены все созданные/изменённые node IDs (требование figma-use §1.15)
+- [ ] Возвращены все созданные/изменённые node IDs (требование figma-use §1 rule 15 — return node IDs)
 - [ ] Никаких write-операций в файлы, на которые пользователь явно не дал ОК
