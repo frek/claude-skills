@@ -22,10 +22,10 @@ license: MIT
 
 # skill-scout
 
-Vet AI agent skills the way you'd vet a dependency: a skill is a chunk of prompt
-that rides in the agent's context on every run. A bad one doesn't just fail to
-help — it burns context and quietly tilts the output. So the job is never "install
-more," it's "install fewer, and only the ones that earn their weight."
+Vet AI agent skills the way you'd vet a dependency: a skill is a chunk of prompt —
+its description rides in context on every run, its body loads when it triggers. A bad
+one doesn't just fail to help, it burns context and quietly tilts the output. The job
+is never "install more," it's "install fewer, and only the ones that earn their weight."
 
 **Core principle: judge from the task, not from the stack.** That React or Stripe
 appears in `package.json` is not a reason to load a skill. A skill is justified only
@@ -76,8 +76,8 @@ The description is marketing written to get the skill installed. The value is in
 ### 3. Red flags
 - **Filler and marketing.** Motivational prose; a mandatory scripted opening reply;
   links pushing a paid course inside the instructions.
-- **Bloat.** 1000+ lines on one topic is a pile of tokens loaded every single run.
-  Length is not quality; often the reverse.
+- **Bloat.** 1000+ lines on one topic is a pile of tokens the model wades through
+  every time the skill fires. Length is not quality; often the reverse.
 - **Pseudo-precision.** Magic numeric "dials" (`INTENSITY: 6`) with no measurable
   scale — ritual dressed as instrument.
 - **Hardcoded fashion.** Built around this year's trends; it will rot with them
@@ -146,9 +146,8 @@ each `SKILL.md` head rather than trusting names.
 
 ## How this differs from auto-installers
 
-Tools like `autoskills` install skills by detected technology. That's a convenient
-way to gather *candidates*, but it swaps the real criterion (does this fix a
-recurring failure, and is the content any good?) for a proxy (does this label appear
-in my deps?). Use auto-detection to build a longlist if you like — but the final
-keep/skip call is always a human-read of the actual `SKILL.md`. That read is what
-this skill automates the judgment for.
+Tools like `autoskills` install by detected technology — a fine way to gather
+*candidates*, but it swaps the real test (does this fix a recurring failure, is the
+content good?) for a proxy (does the label appear in my deps?). Use it for a
+longlist; the keep/skip call is always a human read of the actual `SKILL.md` — the
+judgment this skill automates.
